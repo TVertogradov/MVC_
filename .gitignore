@@ -1,0 +1,5 @@
+.idea
+app/vendor
+var
+usr/image
+composer.lock
