@@ -6,3 +6,6 @@ if (!is_dir(CONFIG_PATH)){
 
     throw new ErrorException("System not found config dir");
 }
+
+
+require_once realpath('..');

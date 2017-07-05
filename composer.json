@@ -1,10 +1,21 @@
 {
-    "name": "tima/first_prj",
-    "description": "mvc_lessone",
+    "name": "timavertogradov/fstk2802",
+    "description": "Create MVC PHP",
     "type": "project",
     "require": {
         "php": ">=5.4"
     },
     "license": "MIT",
-    "minimum-stability": "dev"
+    "authors": [
+        {
+            "name": "tima",
+            "email": "timon8106@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "MVC\\System\\": "app\\system\\"
+        }
+    }
 }
