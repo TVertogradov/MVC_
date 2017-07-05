@@ -8,4 +8,4 @@ if (!is_dir(CONFIG_PATH)){
 }
 
 
-require_once realpath('..');
+require_once realpath('..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autload.php');
