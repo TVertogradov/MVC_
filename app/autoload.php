@@ -1,11 +1,19 @@
 <?php
 
-define('CONFIG_PATH', realpath(DIRECTORY_SEPARATOR . 'config'));
+define('CONFIG_PATH', realpath(__DIR__.DIRECTORY_SEPARATOR . 'config'));
+define('CACHE_DIR', realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'var'.DIRECTORY_SEPARATOR.'cache'));
+define('SYSTEM_VIEV', realpath(__DIR__.DIRECTORY_SEPARATOR.'system'.DIRECTORY_SEPARATOR.'viev'));
+
 
 if (!is_dir(CONFIG_PATH)){
 
     throw new ErrorException("System not found config dir");
 }
 
+if (!is_dir(CACHE_DIR)){
+    mkdir(CACHE_DIR, 0777, true);
+}
 
-require_once realpath('..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autload.php');
+
+
+require_once realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php');
