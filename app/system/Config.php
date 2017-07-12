@@ -31,7 +31,7 @@ class Config
         // TODO: Implement __clone() method.
     }
 
-    public function searchKey(array $keys){
+    public function searchKey($keys = []){
         $firstKey = array_shift($keys);
         if (array_key_exists($firstKey, $this->_node)){
             if (!count($keys) == 1){
@@ -62,13 +62,16 @@ class Config
      * @return Config
      */
     public static function get($pattern = null){
-        if(self::$instance instanceof Config){
+        if(!self::$instance instanceof Config){
             self::$instance = new self();
         }
 
         if($pattern) {
             $searchKeys = explode('.', $pattern);
-            return self::$instance->searchKey($searchKeys);
+            if($pattern) {
+
+                return self::$instance->searchKey($searchKeys);
+            }
         }
 
         return self::$instance->_node;
