@@ -17,7 +17,7 @@ final class Router
     private $thisUri = null;
     public function __construct()
     {
-        $this->routersConfig = Config::get('router.routers');
+        $this->routersConfig = Config::get('router.routes');
         $this->thisUri = $_SERVER['REQUEST_URI'];
         $notScriptName = str_replace('/index.php', null, $_SERVER['SCRIPT_NAME']);
         // fstck2802/usr/about-us --- /about-us
@@ -33,8 +33,16 @@ final class Router
         if(!$router) {
             throw new ErrorHttpException();
         }
+        if(is_array($router) && array_key_exists('defaults', $router)) {
+            $controllerParams = $router['defaults'];
+            $actionMethod = $controllerParams['action'] . 'Action';
+            if(method_exists($controllerParams['controller'], $actionMethod)) {
+                $objectController = new $controllerParams['controller']();
+                return $objectController->$actionMethod();
+            }
+        }
 
-
+        throw new ErrorHttpException();
     }
 
     /**

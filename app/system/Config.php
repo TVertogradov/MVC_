@@ -41,10 +41,10 @@ class Config
             $lists = $this->_node[$firstKey];
 
             foreach ($keys as $key){
-                if (array_key_exists($key, $lists)){
+                if (is_array($lists) && array_key_exists($key, $lists)){
                     $lists = $lists[$key];
-                }else{
-                    return null;
+                } else{
+                    return $lists;
                 }
             }
             return $lists;

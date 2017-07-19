@@ -22,6 +22,16 @@ return [
                 'controller' => 'App\\Controller\\Main',
                 'action' => 'aboutAs'
             ]
+        ],
+        'pregPage' => [
+            'pattern' => '/news/<id>/<test>',
+            'rules' => [
+                'id' => '[0-9]+'
+            ],
+            'defaults' => [
+                'controller' => 'App\\Contrller\\News',
+                'action' => 'news'
+            ]
         ]
     ]
 ];
